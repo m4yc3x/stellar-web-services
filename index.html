@@ -40,6 +40,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r78/three.min.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
     <!-- Navigation Mark -->
@@ -95,29 +96,39 @@
                 <h3>STELLAR WEB SERVICES</h3>
             </div>
             <div class="content-wrapper">
-                <h3 class="section-title">Contact Our Team</h3>
+                <h3 class="section-title">About Stellar Web Services</h3>
                 <div class="contact-grid">
-                    <div class="contact-form">
-                        <form id="contactForm">
-                            <input type="text" name="name" placeholder="Your Name" required>
-                            <input type="email" name="email" placeholder="Your Email" required>
-                            <textarea name="message" placeholder="Your Message" required></textarea>
-                            <button type="submit" class="btn">Send Message</button>
-                        </form>
+                    <div class="about-us">
+                        <h4>Our Mission</h4>
+                        <p>At Stellar Web Services, we are dedicated to crafting exceptional digital experiences. Our mission is to empower businesses and individuals with cutting-edge web solutions that are not only visually stunning but also highly functional and user-friendly.</p>
+                        <h4>Our Expertise</h4>
+                        <p>We specialize in:</p>
+                        <ul class="margin-left">
+                            <li>Responsive Web Design</li>
+                            <li>Custom Web Development</li>
+                            <li>E-commerce Solutions</li>
+                            <li>Content Management Systems</li>
+                            <li>Web Application Development</li>
+                            <li>SEO Optimization</li>
+                        </ul>
                     </div>
                     <div class="contact-info">
-                        <h4>About Us</h4>
-                        <p>Stellar Web Services specializes in building dynamic and visually appealing websites using HTML, CSS, PHP, and Laravel. We are committed to delivering high-quality websites that meet your needs and exceed your expectations.</p>
-                        <h4>Contact</h4>
-                        <p>Email: <a href="mailto:stellarweb@tuta.io">stellarweb@tuta.io</a></p>
+                        <h4>Get in Touch</h4>
+                        <p>We'd love to hear about your project and how we can help bring your vision to life.</p>
+                        <div class="email">Email: <a class="email-link" href="mailto:stellarweb@tuta.io" rel="noopener noreferrer">stellarweb@tuta.io</a></div>
+                        <h4>Follow Us</h4>
+                        <div class="social-links">
+                            <a href="https://instagram.com/encrypt2me" target="_blank" rel="noopener noreferrer">Instagram</a>
+                            <a href="https://github.com/m4yc3x" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        </div>
                         <h4>Support Us</h4>
                         <div class="crypto-addresses">
-                            <p>XMR: 82taWzw1DMTGLv9rpWweot4Te5scQqZsbNgfLpppswgbh9HV5sbGT3BSFW7atK2sGhZfwStBEY8NE1SqYg8y4ehs5V2rpZw</p>
-                            <p>DASH: XcP6LNQPJMQHmrry8NvCTMWgn2CwCJK2Xq</p>
-                            <p>BTC: 381v5RVrcrGuRCQkcSZib8trPnNLdiryrH</p>
-                            <p>ETH: 0x3f4e9922f3d5535f5f948f4903875f6fcadb1509</p>
-                            <p>LTC: LVC7pusToWFZ6vjfV26Fp7j1xqgVHtYCku</p>
-                            <p>Z$: t1JMf4o6FzeTXY31rftH3BqVcacRYd26gjL</p>
+                            <p>XMR: <span class="select">82taWzw1DMTGLv9rpWweot4Te5scQqZsbNgfLpppswgbh9HV5sbGT3BSFW7atK2sGhZfwStBEY8NE1SqYg8y4ehs5V2rpZw</span></p>
+                            <p>DASH: <span class="select">XcP6LNQPJMQHmrry8NvCTMWgn2CwCJK2Xq</span></p>
+                            <p>BTC: <span class="select">381v5RVrcrGuRCQkcSZib8trPnNLdiryrH</span></p>
+                            <p>ETH: <span class="select">0x3f4e9922f3d5535f5f948f4903875f6fcadb1509</span></p>
+                            <p>LTC: <span class="select">LVC7pusToWFZ6vjfV26Fp7j1xqgVHtYCku</span></p>
+                            <p>Z$: <span class="select">t1JMf4o6FzeTXY31rftH3BqVcacRYd26gjL</span></p>
                         </div>
                     </div>
                 </div>

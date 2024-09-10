@@ -223,7 +223,13 @@ function shiftCameraToContactView() {
         TweenLite.to($('.moon-container'), 1, { 
             opacity: 1, 
             ease: Power3.easeInOut, 
-            onStart: () => $('.moon-container').css('pointer-events', 'auto') 
+            onStart: () => {
+                $('.moon-container').css('pointer-events', 'auto');
+                TweenLite.fromTo($('.contact-grid'), 1, 
+                    { opacity: 0, y: 20 }, 
+                    { opacity: 1, y: 0, ease: Power3.easeOut, delay: 0.5 }
+                );
+            }
         })
     ]);
 }
@@ -311,26 +317,10 @@ function populateProjectGrid() {
     });
 }
 
-// Handle form submission
-function handleContactFormSubmission(event) {
-    event.preventDefault();
-    const form = event.target;
-    const formData = new FormData(form);
-    
-    console.log("Form submitted:");
-    for (let [key, value] of formData.entries()) {
-        console.log(`${key}: ${value}`);
-    }
-    
-    form.reset();
-    alert("Thank you for your message. We'll get back to you soon!");
-}
-
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
     initializeScene();
     setupEventListeners();
     populateProjectGrid();
-    document.getElementById('contactForm').addEventListener('submit', handleContactFormSubmission);
     animateScene();
 });
