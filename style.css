@@ -121,6 +121,7 @@ body {
     position: absolute;
     cursor: pointer;
     opacity: 0;
+    z-index: 9;
 }
 
 .x-mark:hover .right {

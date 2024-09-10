@@ -16,7 +16,7 @@ function initializeThreeJSEnvironment() {
     camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     renderer = new THREE.WebGLRenderer();
 
-    camera.position.z = 50;
+    camera.position.z = 70;
     renderer.setClearColor("#121212", 1.0);
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(window.devicePixelRatio);
@@ -41,7 +41,7 @@ function setupSceneLighting() {
     });
 }
 
-// Mesh creation
+// Enhanced Mesh creation
 function createBackgroundMesh() {
     const geometry = new THREE.PlaneGeometry(400, 400, 70, 70);
     const darkBlueMaterial = new THREE.MeshPhongMaterial({
@@ -57,6 +57,7 @@ function createBackgroundMesh() {
         vertice.z += (Math.random() - 0.5) * 4;
         vertice.dx = Math.random() - 0.5;
         vertice.dy = Math.random() - 0.5;
+        vertice.dz = Math.random() - 0.5;
         vertice.randomDelay = Math.random() * 5;
     });
 
@@ -67,6 +68,43 @@ function createBackgroundMesh() {
 
     plane = new THREE.Mesh(geometry, darkBlueMaterial);
     scene.add(plane);
+
+    // Add floating triangles
+    addFloatingTriangles();
+}
+
+// New function to add floating triangles
+function addFloatingTriangles() {
+    const triangleGeometry = new THREE.Geometry();
+    triangleGeometry.vertices.push(
+        new THREE.Vector3(0, 1, 0),
+        new THREE.Vector3(-0.866, -0.5, 0),
+        new THREE.Vector3(0.866, -0.5, 0)
+    );
+    triangleGeometry.faces.push(new THREE.Face3(0, 1, 2));
+
+    const triangleMaterial = new THREE.MeshBasicMaterial({ 
+        color: 0x00aec0, 
+        side: THREE.DoubleSide,
+        transparent: true,
+        opacity: 0.6
+    });
+
+    for (let i = 0; i < 50; i++) {
+        const triangle = new THREE.Mesh(triangleGeometry, triangleMaterial);
+        triangle.position.set(
+            (Math.random() - 0.5) * 200,
+            (Math.random() - 0.5) * 200,
+            (Math.random() - 0.5) * 100
+        );
+        triangle.rotation.set(
+            Math.random() * Math.PI,
+            Math.random() * Math.PI,
+            Math.random() * Math.PI
+        );
+        triangle.scale.setScalar(Math.random() * 3 + 1);
+        scene.add(triangle);
+    }
 }
 
 // Star creation
@@ -107,7 +145,7 @@ function initializeScene() {
     setupStarLayers();
 }
 
-// Animation loop
+// Enhanced Animation loop
 let timer = 0;
 function animateScene() {
     requestAnimationFrame(animateScene);
@@ -116,19 +154,47 @@ function animateScene() {
     updateVertexPositions();
     updateIntersections();
     updateStarRotations();
+    animateFloatingTriangles();
+    animatePlaneWaves();
 
     renderer.render(scene, camera);
 }
 
-// Update vertex positions
+// Enhanced Update vertex positions
 function updateVertexPositions() {
     plane.geometry.vertices.forEach(vertice => {
-        vertice.x -= Math.sin(timer + vertice.randomDelay) / 40 * vertice.dx;
+        vertice.x += Math.sin(timer + vertice.randomDelay) / 40 * vertice.dx;
         vertice.y += Math.sin(timer + vertice.randomDelay) / 40 * vertice.dy;
+        vertice.z += Math.cos(timer + vertice.randomDelay) / 40 * vertice.dz;
     });
 
     plane.geometry.verticesNeedUpdate = true;
     plane.geometry.elementsNeedUpdate = true;
+}
+
+// New function to animate floating triangles
+function animateFloatingTriangles() {
+    scene.children.forEach(child => {
+        if (child instanceof THREE.Mesh && child !== plane) {
+            child.rotation.x += 0.01;
+            child.rotation.y += 0.01;
+            child.position.y += Math.sin(timer + child.position.x) * 0.1;
+        }
+    });
+}
+
+// New function to create wave-like animation on the plane
+function animatePlaneWaves() {
+    const waveX = Math.sin(timer * 0.3) * 5;
+    const waveY = Math.cos(timer * 0.3) * 5;
+
+    plane.geometry.vertices.forEach((vertex, i) => {
+        const distance = new THREE.Vector2(vertex.x, vertex.y).distanceTo(new THREE.Vector2(0, 0));
+        const wave = Math.sin(distance * 0.03 + timer * 0.7) * 4;
+        vertex.z = wave + Math.sin(i + timer * 0.7) * 2;
+    });
+
+    plane.geometry.verticesNeedUpdate = true;
 }
 
 // Update intersections
@@ -189,7 +255,7 @@ function handleMouseMove(event) {
     normalizedMouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 }
 
-// Camera animations
+// Camera animations (unchanged)
 function shiftCameraToProjectsView() {
     const timeline = new TimelineMax();
     timeline.add([
@@ -249,7 +315,7 @@ function resetCameraToInitialView() {
             onComplete: () => $('.moon-container').css('pointer-events', 'none') 
         }),
         TweenLite.to(camera.rotation, 3, { x: 0, z: 0, ease: Power3.easeInOut }),
-        TweenLite.to(camera.position, 3, { z: 50, ease: Power3.easeInOut }),
+        TweenLite.to(camera.position, 3, { z: 70, ease: Power3.easeInOut }),
         TweenLite.to(camera.position, 2.5, { y: 0, ease: Power3.easeInOut }),
         TweenLite.to(plane.scale, 3, { x: 1, ease: Power3.easeInOut })
     ]);
@@ -268,7 +334,7 @@ const projects = [
     },
     {
         title: "Encrypt2Me",
-        image: "img/swse2m2.gif",
+        image: "img/swse2m4.gif",
         description: "Secure file sharing platform with end-to-end encryption.",
         url: "https://encrypt2.me"
     },
@@ -293,8 +359,26 @@ const projects = [
     {
         title: "Yokai SMP",
         image: "img/swsyokai.gif",
-        description: "Website for a Minecraft server inspired by Japanese folklore.",
+        description: "Lore website for a Minecraft SMP.",
         url: "https://yokai.stellarweb.services"
+    },
+    {
+        title: "Razorz Barbershop",
+        image: "img/swsrazorz.gif",
+        description: "Website for a barbershop in Richardson, Texas.",
+        url: "https://razorz.stellarweb.services"
+    },
+    {
+        title: "Far & Wide Records",
+        image: "img/swsf8h.gif",
+        description: "Website for a record label in Texas.",
+        url: "https://f8h.quest"
+    },
+    {
+        title: "Nightforge Studios",
+        image: "img/swsnf.gif",
+        description: "Website for a indie game studio in Colorado.",
+        url: "https://nightforge.org"
     }
 ];
 
