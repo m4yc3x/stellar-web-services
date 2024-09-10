@@ -46,7 +46,7 @@ This license and any rights to The Code terminate automatically if You fail to c
 
 ## 6. Governing Law
 
-This license shall be governed by and construed in accordance with the laws of [Jurisdiction], without regard to its conflict of law provisions.
+This license shall be governed by and construed in accordance with the laws of Texas, USA, without regard to its conflict of law provisions.
 
 ## 7. Entire Agreement
 
