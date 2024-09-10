@@ -1,6 +1,6 @@
 # Extremely Restrictive Code License (ERCL)
 
-Version 1.0, [Current Date]
+Version 1.0
 
 ## 1. Definitions
 
