@@ -350,12 +350,12 @@ const projects = [
         description: "Booking website for a skilled barber based in Frisco, Texas.",
         url: "https://joydfadez.com"
     },
-    {
+    /*{
         title: "VetCare+",
         image: "img/swsvetcare.gif",
         description: "Website for a veterinary clinic in Northern Ireland.",
         url: "https://vetcare.stellarweb.services"
-    },
+    },*/
     {
         title: "Yokai SMP",
         image: "img/swsyokai.gif",
@@ -379,7 +379,67 @@ const projects = [
         image: "img/swsnf.gif",
         description: "Website for a indie game studio in Colorado.",
         url: "https://nightforge.org"
-    }
+    },
+    {
+        title: "ORIWTF",
+        image: "img/oriwtf.jpg",
+        description: "The Open Research Initiative for Web Technologies Foundation",
+        url: "https://ori.wtf"
+    },
+    {
+        title: "MyAllergies",
+        image: "img/swsmya.gif",
+        description: "MyAllergies allows easy communication for food and medicine allergies.",
+        url: "https://myallergies.info"
+    },
+    {
+        title: "Jan Fher Studio & Spa",
+        image: "img/swsjan.gif",
+        description: "Jan Fher Hair Studio & Spa is a luxurious retreat for wellness and beauty.",
+        url: "https://janfher.stellarweb.services"
+    },
+    {
+        title: "Kabutopz",
+        image: "img/swskabu.jpg",
+        description: "An interactive website for the content-creator Kabutopz.",
+        url: "https://kabutopz.com"
+    },
+    {
+        title: "CrackMy.App",
+        image: "img/swscma.jpg",
+        description: "A competitive community for reverse-engineers to share and solve challenges.",
+        url: "https://crackmy.app"
+    },
+    {
+        title: "unheard.",
+        image: "img/swsunheard.png",
+        description: "An international music label pushing the boundaries of music.",
+        url: "https://unheard.online"
+    },
+    {
+        title: "Sendori",
+        image: "img/sendori.jpg",
+        description: "A P2P file transfer tool. Serverless, end-to-end encrypted, and fast.",
+        url: "https://send.ori.wtf"
+    },
+    {
+        title: "Artori",
+        image: "img/artori.jpg",
+        description: "Create stunning visual effects with a node-based image editor",
+        url: "https://art.ori.wtf"
+    },
+    {
+        title: "Chatori",
+        image: "img/chatori.png",
+        description: "A helpful AI assistant that can search the web, reason, and more.",
+        url: "https://chat.ori.wtf"
+    },
+    {
+        title: "Taskori",
+        image: "img/taskori.jpg",
+        description: "An AI dream management tool that helps you achieve your goals.",
+        url: "https://task.ori.wtf"
+    },
 ];
 
 // Populate project grid
